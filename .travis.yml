@@ -8,5 +8,5 @@ install:
   - "pip install pytest --user"
   - "pip install --user -r requirements.txt"
 script:
-  - "python app.py"
-  - "python -m pytest tests/"
+  - "python app.py &"
+  - "python -m pytest tests/acceptance/"
