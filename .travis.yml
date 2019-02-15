@@ -6,7 +6,7 @@ matrix:
       sudo: true
 install:
   - "pip install pytest --user"
-  - "pip install -r requirements.txt"
+  - "pip install --user -r requirements.txt"
 script:
   - "python app.py"
   - "python -m pytest tests/"
