@@ -1,6 +1,8 @@
 from behave import *
 from selenium import webdriver
 import time
+from os import *
+import os
 
 from tests.acceptance.page_model.blog_page import BlogPage
 from tests.acceptance.page_model.home_page import HomePage
@@ -11,21 +13,28 @@ use_step_matcher('re')
 
 @given('I am on the homepage')
 def step_impl(context):
-    context.browser = webdriver.Chrome('\\webdriver\\chromedriver.exe')
+    basepath = os.getcwd().split('\\venv\\Lib\\site-packages')
+    filepath = basepath[0] + '\\webdriver\\chromedriver.exe'
+    print("Chrome driver path: "+filepath)
+    context.browser = webdriver.Chrome(filepath)
     page = HomePage(context.browser)
     context.browser.get(page.url)
 
 
 @given('I am on the blog page')
 def step_impl(context):
-    context.browser = webdriver.Chrome('\\webdriver\\chromedriver.exe')
+    basepath = os.getcwd().split('\\venv\\Lib\\site-packages')
+    filepath = basepath[0] + '\\webdriver\\chromedriver.exe'
+    context.browser = webdriver.Chrome(filepath)
     page = BlogPage(context.browser)
     context.browser.get(page.url)
 
 
 @given('I am on the new post page')
 def step_impl(context):
-    context.browser = webdriver.Chrome('\\webdriver\\chromedriver.exe')
+    basepath = os.getcwd().split('\\venv\\Lib\\site-packages')
+    filepath = basepath[0] + '\\webdriver\\chromedriver.exe'
+    context.browser = webdriver.Chrome(filepath)
     page = NewPostPage(context.browser)
     context.browser.get(page.url)
 
