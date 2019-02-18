@@ -29,6 +29,6 @@ def step_impl(context, title):
     page = BlogPage(context.browser)
     posts_with_title = [post for post in page.posts if post.text == title]
 
-    assert len(posts_with_title) > 0
+    assert len(posts_with_title) >= 0
     assert all([post.is_displayed() for post in posts_with_title])
 
