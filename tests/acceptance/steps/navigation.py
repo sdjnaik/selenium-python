@@ -34,7 +34,7 @@ def step_impl(context):
 def step_impl(context):
     basepath = os.getcwd().split('\\venv\\Lib\\site-packages')
     filepath = basepath[0] + '\\webdriver\\chromedriver.exe'
-    context.browser = webdriver.Chrome(filepath)
+    context.browser = webdriver.Chrome('..\\..\\tests\\webdriver\\chromedriver.exe')
     page = NewPostPage(context.browser)
     context.browser.get(page.url)
 
