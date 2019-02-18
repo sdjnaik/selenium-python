@@ -1,8 +1,6 @@
 from behave import *
 from selenium import webdriver
 import time
-from os import *
-import os
 
 from tests.acceptance.page_model.blog_page import BlogPage
 from tests.acceptance.page_model.home_page import HomePage
@@ -13,21 +11,22 @@ use_step_matcher('re')
 
 @given('I am on the homepage')
 def step_impl(context):
-    context.browser = webdriver.Chrome('\\tests\\webdriver\\chromedriver.exe')
+    # context.browser = webdriver.Chrome('tests\\webdriver\\chromedriver.exe')
+    context.browser = webdriver.Firefox()
     page = HomePage(context.browser)
     context.browser.get(page.url)
 
 
 @given('I am on the blog page')
 def step_impl(context):
-    context.browser = webdriver.Chrome('\\tests\\webdriver\\chromedriver.exe')
+    context.browser = webdriver.Firefox()
     page = BlogPage(context.browser)
     context.browser.get(page.url)
 
 
 @given('I am on the new post page')
 def step_impl(context):
-    context.browser = webdriver.Chrome('\\tests\\webdriver\\chromedriver.exe')
+    context.browser = webdriver.Firefox()
     page = NewPostPage(context.browser)
     context.browser.get(page.url)
 
@@ -42,7 +41,5 @@ def step_impl(context):
 @then('I am on the home page')
 def step_impl(context):
     expected_url = HomePage(context.browser).url
-    print('Expected Url: ', expected_url)
-    print('Actual Url: ', context.browser.current_url)
     assert context.browser.current_url == expected_url
     time.sleep(2)
