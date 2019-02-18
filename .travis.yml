@@ -9,4 +9,4 @@ install:
   - "pip install --user -r requirements.txt"
 script:
   - "python app.py &"
-  - "python3.7 -m pytest tests/acceptance/"
+  - "python3.7.1 -m pytest tests/acceptance/"
