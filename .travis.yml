@@ -4,11 +4,9 @@ matrix:
     - python: 3.7
       dist: xenial
       sudo: true
-before_install:
-  - "pip install --upgrade python"
 install:
-  - "pip install pytest --user"
+  - "pip install behave --user"
   - "pip install --user -r requirements.txt"
 script:
   - "python app.py &"
-  - "python -m pytest tests/"
+  - "python -m behave tests/acceptance"
