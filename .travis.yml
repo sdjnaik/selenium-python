@@ -9,8 +9,8 @@ install:
   - "pip install --user -r requirements.txt"
 before_script:
   - "wget http://chromedriver.storage.googleapis.com/2.9/chromedriver_win32.zip"
-  - "unzip chromedriver_win32.zip -d /home/travis/virtualenv/python3.7/Scripts/"
-  - "PATH='$PATH;/home/travis/virtualenv/python3.7/Scripts/chromedriver.exe'"
+  - "unzip chromedriver_win32.zip -d /home/travis/virtualenv/python3.7/bin/"
+  - "PATH='$PATH;/home/travis/virtualenv/python3.7/bin/chromedriver.exe;/usr/bin/python'"
 script:
   - "python app.py &"
   - "python -m behave tests/acceptance"
