@@ -1,25 +1,25 @@
-from flask import Flask, render_template, request, redirect, url_for
+import flask
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 
 posts = []
 
 
 @app.route('/')
 def homepage():
-    return render_template('home.html')
+    return flask.render_template('home.html')
 
 
 @app.route('/blog')
 def blog_page():
-    return render_template('blog.html', posts=posts)
+    return flask.render_template('blog.html', posts=posts)
 
 
 @app.route('/post', methods=['GET', 'POST'])
 def add_post():
-    if request.method == 'POST':
-        title = request.form['title']
-        content = request.form['content']
+    if flask.request.method == 'POST':
+        title = flask.request.form['title']
+        content = flask.request.form['content']
         global posts
 
         posts.append({
@@ -27,8 +27,8 @@ def add_post():
             'content': content
         })
 
-        return redirect(url_for('blog_page'))
-    return render_template('new_post.html')
+        return flask.redirect(flask.url_for('blog_page'))
+    return flask.render_template('new_post.html')
 
 
 @app.route('/post/<string:title>')
@@ -37,9 +37,9 @@ def see_post(title):
 
     for post in posts:
         if post['title'] == title:
-            return render_template('post.html', post=post)
+            return flask.render_template('post.html', post=post)
 
-    return render_template('post.html', post=None)
+    return flask.render_template('post.html', post=None)
 
 
 if __name__ == '__main__':
