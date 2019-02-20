@@ -11,22 +11,22 @@ use_step_matcher('re')
 
 @given('I am on the homepage')
 def step_impl(context):
-    # context.browser = webdriver.Chrome('tests\\webdriver\\chromedriver.exe')
-    context.browser = webdriver.Firefox()
+    context.browser = webdriver.Chrome()
+    #context.browser = webdriver.Firefox()
     page = HomePage(context.browser)
     context.browser.get(page.url)
 
 
 @given('I am on the blog page')
 def step_impl(context):
-    context.browser = webdriver.Firefox()
+    context.browser = webdriver.Chrome()
     page = BlogPage(context.browser)
     context.browser.get(page.url)
 
 
 @given('I am on the new post page')
 def step_impl(context):
-    context.browser = webdriver.Firefox()
+    context.browser = webdriver.Chrome()
     page = NewPostPage(context.browser)
     context.browser.get(page.url)
 
