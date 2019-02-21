@@ -10,7 +10,7 @@ install:
 before_script:
   - "wget http://chromedriver.storage.googleapis.com/2.9/chromedriver_win32.zip"
   - "unzip chromedriver_win32.zip -d /home/travis/virtualenv/python2.7/bin/"
-  - "PATH='$PATH:/usr/bin/:/bin:/usr/local/lib/python3.7/site-packages:/home/travis/.local/lib/python2.7/site-packages:/usr/local/lib/python2.7/dist-packages'"
+  - "PATH='$PATH:/usr/bin/:/bin:/usr/local/lib/python3.7/site-packages:/home/travis/.local/lib/python2.7/site-packages:/usr/local/lib/python2.7/dist-packages:/home/travis/virtualenv/python2.7/bin/'"
 script:
   - "python app.py &"
   - "python -m behave tests/acceptance"
